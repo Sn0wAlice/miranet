@@ -10,6 +10,8 @@ if(process.stdout.columns < 127) {
 let hostname = "https://www.amelia.lu"
 let path = ""
 
+let authHeader = "miranet"
+
 let pageClean = ""
 let submitURL = ""
 let submitType = ""
@@ -156,7 +158,7 @@ async function getPageContent(url){
         let req = await fetch(url, {
             method: 'GET',
             headers: {
-                "user-agent": "miranet",
+                "user-agent": authHeader,
                 "Cookie": cookieStringGenerator()
             }
         })
@@ -427,7 +429,7 @@ async function userSubmit(args){
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            "user-agent": "miranet",
+                            "user-agent": authHeader,
                             "Cookie": cookieStringGenerator()
                         },
                         body: JSON.stringify(body)
